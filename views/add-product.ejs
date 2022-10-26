@@ -1,0 +1,22 @@
+<%- include("parts/header") %>
+<%- include("parts/navbar") %>  
+
+<div class="container text-center">
+<form action="/admin/add" method="POST" enctype="multipart/form-data">
+  <input type="text" class="form-control" name="name" placeholder="Name" />
+  <input type="number" class="form-control" name="price" placeholder="price" />
+  <textarea type="password" class="form-control" name="description" placeholder="description">
+
+  </textarea>
+
+  <select type="password" class="form-control" name="category">
+    <option value="" selected>choose category</option>
+    <option value="clothes">clothes</option>
+    <option value="phones">phones</option>
+    <option value="computers">computers</option>
+  </select>
+  <input type="file" class="form-control" name="image" placeholder="Image" />
+</form>
+</div>
+
+<%- include("parts/footer") %> 
