@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
+
 const express = require("express")
 const app = express()
 
@@ -12,7 +16,7 @@ const homeRouter = require("./routes/home.route")
 const productRouter = require("./routes/product.route")
 const authRouter = require('./routes/auth.route')
 const cartRouter = require("./routes/cart.route")
-//const adminRouter = require("./routes/admin.route")
+const adminRouter = require("./routes/admin.route")
 
 app.use(express.static(path.join(__dirname, "assets")))
 app.use(express.static(path.join(__dirname, "images")))
@@ -41,9 +45,9 @@ app.use("/", homeRouter)
 app.use("/product", productRouter)
 app.use("/", authRouter)
 app.use("/cart", cartRouter)
-//app.use("/admin", adminRouter)
+app.use("/admin", adminRouter)
 
-console.log("er")
+
 
 app.use((req, res, next)=> {
     res.status(404)

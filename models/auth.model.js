@@ -22,26 +22,30 @@ exports.createNewUser = (username, email, password) => {
            return User.findOne({email: email})
         }).then(user=> {
             if(user){ 
+                
                 mongoose.disconnect()
                  reject("the email is already exist")
+                 
              } else{
+                
                   return bcrypt.hash(password, 10)
-            }
+             }    
         }).then(hashedPassword=> {
             let user = new User({
                 username: username,
                 password: hashedPassword,
                 email: email
             })
-            user.save()
+        
+            return user.save()
         }).then(()=>{
             mongoose.disconnect()
             resolve()
         }).catch(err=>{
-            mongoose.disconnect()
+           mongoose.disconnect()
             reject()
         })
-      
+
     })
 }
 
@@ -58,9 +62,11 @@ exports.login = (password, email) => {
                         reject("password is incorrect")
                     }else{
                         mongoose.disconnect()
-                        resolve({
+                        resolve({ 
                             id: user._id,
-                            isAdmin: user.isAdmin
+                            isAdmin: user.isAdmin,
+                            email: user.email,
+                            name: user.username
                         })
                     }
                  })

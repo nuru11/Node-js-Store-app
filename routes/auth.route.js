@@ -27,8 +27,6 @@ router.post("/login",authGuard.notAuth, bodyParser.urlencoded({extended: true}),
 check("email").not().isEmpty().withMessage('email is required').isEmail().withMessage("invalid email")
 ,authController.postLogin)
 
-//router.get("/admin", authGuard.isAdmin, authController)
-
 router.all('/logout',authGuard.isAuth ,authController.logout)
 
 module.exports = router

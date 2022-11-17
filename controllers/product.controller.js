@@ -1,12 +1,4 @@
 const homeModels = require("../models/home.model")
-/*
-exports.getProduct = (req,res,next) => {
-    productsModels.getFirstProduct().then(product=>{
-        res.render("product", {
-            product: product
-        })
-    })
-}*/
 
 exports.getProductById = (req,res,next) => {    
 
@@ -16,8 +8,9 @@ exports.getProductById = (req,res,next) => {
         res.render("product", {
             product: product,
             isUser: req.session.userId, 
-            isAdmin: req.session.isAdmin
+            isAdmin: req.session.isAdmin,
+            pageTitle: "Cart"
         })
-        console.log(product) 
+
     })
 }

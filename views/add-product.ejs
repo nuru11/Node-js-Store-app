@@ -2,7 +2,7 @@
 <%- include("parts/navbar") %>  
 
 <div class="container text-center">
-<form action="/admin/add" method="POST" enctype="multipart/form-data">
+<form action="/admin/add-product" method="POST" enctype="multipart/form-data">
   <input type="text" class="form-control" name="name" placeholder="Name" />
   <input type="number" class="form-control" name="price" placeholder="price" />
   <textarea type="password" class="form-control" name="description" placeholder="description">
@@ -16,6 +16,8 @@
     <option value="computers">computers</option>
   </select>
   <input type="file" class="form-control" name="image" placeholder="Image" />
+
+  <input type="submit" value="add-product" class="btn btn-primary" />
 </form>
 </div>
 

@@ -19,13 +19,16 @@
                 <%= emailError.msg %>
             </p>
             <% } %>
+            <% if(authError){ %>
+                <div><%= authError %></div>
+                <% } %>
             
         <input type="password" class="form-control" name="password" placeholder="password" />
         <% let passwordError = validationError.find(err => err.param === "password") %>
         <% if(passwordError){ %>
             <p class="alert alert-danger">
                 <%= passwordError.msg %>
-            </p>
+            </p> 
             <% } %>
         <input type="password" class="form-control" name="confirmPassword" placeholder="confirmPassword" />
         <% let confirmPasswordError = validationError.find(err => err.param === "confirmPassword") %>

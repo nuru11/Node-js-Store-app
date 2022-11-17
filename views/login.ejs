@@ -12,7 +12,12 @@
         <% for(let error of loginValidationResult) { %>
         <div class="alert alert-danger"><%= error.msg %></div>
         <% } %>
+        <% } %> 
+
+      <% if(loginError.length > 0) {%>
+       <div class="alert alert-danger">jjjjjjkl</div>
         <% } %>
+            
    
     <br>
     <div>

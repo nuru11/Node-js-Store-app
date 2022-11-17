@@ -2,7 +2,9 @@
 <%- include("parts/navbar") %>  
 
 <div calss="container">
-
+<% if(addressError.length > 0){ %>
+    <div class="alert alert-danger"><%= addressError %></div>
+    <% } %>
     <% if(items.length === 0) { %>
         <p class="alert alert-danger">there are no item</p>
         <% } else {%>
@@ -12,6 +14,7 @@
                     <td>product name</td>
                     <td>price</td>
                     <td>amount</td>
+                    <td>address</td>
                     <td>total</td>
                     <td></td>
                 </thead>
@@ -23,18 +26,30 @@
                             <td><%= items[i].price %></td>
 
                             <form method="POST">
-                                <td><input type="text" name="amount" class="form-control" value="<%= items[i].amount %>"" /></td>
+                                <td><input type="text" name="amount" class="form-control" value="<%= items[i].amount %>" /></td>
+                                <td><input type="text" name="address" placeholder="add your address"/></td>
                                 <td><%= items[i].price * items[i].amount %> $</td>
                                 <td>
                                     <input type="hidden" name="cartId" value="<%= items[i]._id%>" />
-                                    <input type="submit" class="btn btn-success" value="save" name="cartId" formaction="/cart/save" />
-                                    <input type="submit" class="btn btn-danger" value="delete" name="cartId" formaction="/cart/delete" />
+
+                                    <input type="hidden" name="name" value="<%= items[i].name %>" />
+                                    <input type="hidden" name="price" value="<%= items[i].price %>" />
+                                    <input type="hidden" name="productId" value="<%= items[i].productId %>" />
+
+                                    <input type="submit" class="btn btn-success" value="save"  formaction="/cart/save" />
+                                    <input type="submit" class="btn btn-primary" value="order" formaction="/admin/orders" />
+                                    <input type="submit" class="btn btn-danger" value="delete"  formaction="/cart/delete" />
                                 </td>
-                            </form>
+                                
+                            </form> 
                         </tr>
                         <% } %>
                 </tbody>
             </table>
+            <form action="/cart/deleteAll" method="POST">
+                 <input type="submit" class="btn btn-primary btn-lg" value="delete all" />
+            </form>
+            
             <% } %>
 </div>
 

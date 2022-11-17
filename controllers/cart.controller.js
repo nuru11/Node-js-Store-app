@@ -1,35 +1,53 @@
 const cartModel = require("../models/cart.model")
-const validationResult = require("express-validator").validationResult
+const validationResult = require("express-validator").validationResult 
 
 exports.getCart = (req, res, next) => {
+    console.log(req.flash("postCartValidationError"))
     cartModel.getItemsByUser(req.session.userId).then(items => {
-        console.log(items + "jfdj")
         res.render("cart", {
             items: items,
            isUser: true,
-           isAdmin: req.session.isAdmin
+           isAdmin: req.session.isAdmin,
+           postCartValidationError: req.flash("postCartValidationError")[0],
+           addressError: req.flash("addressError"),
+           pageTitle: "Cart",
         })
     }).catch(err => console.log(err))
   
 }
 
 exports.postCart = (req, res, next) => {
+    console.log(req.body)
+    console.log(req.session)
+    console.log(req.session.userId)
+    
     if(validationResult(req).isEmpty()){
-        cartModel.addNewItem({
-            name: req.body.name, 
-            price: req.body.price,
-            userId: req.session.userId,
-            productId: req.body.productId,
-            amount: req.body.amount,
-            timestamp: Date.now()
-        }).then(()=>{
+        cartModel.addNewItem(req.body.name, req.body.price, req.body.productId, req.session.userId, req.body.amount, Date.now()).then(()=>{
             res.redirect("/")
         }).catch(err=>{
             console.log(err)
             res.redirect("/")
         })
     }else{
-        req.flash("validationError", validationResult(req).array())
+        req.flash("postCartValidationError", validationResult(req).array())
         res.redirect(req.body.redirectTo)
     }
+}
+
+exports.deleteItems = (req, res, next) => {
+    cartModel.deleteItems(req.body.cartId).then(()=>{
+        res.redirect("/cart")
+    })
+}
+
+exports.deleteAll = (req, res, next) => {
+    console.log(req.session.userId)
+    console.log("/*******************/")
+    console.log(req.body);
+    cartModel.delteAll(req.session.userId).then(()=>{
+        res.redirect("/")
+    }).catch(err=>{
+        res.redirect("/cart")
+        console.log(err)
+    })
 }

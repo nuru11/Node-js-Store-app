@@ -22,7 +22,7 @@ exports.getAllProduct = () =>{
                 resolve(products) 
             }).catch(err=>{
                 mongoose.disconnect()
-                reject("model/home.model.js getAllProduct  " + err)
+                reject(err)
                 
             })
         })
@@ -41,6 +41,22 @@ exports.getProductByIdd = id => {
             mongoose.disconnect()
             reject(err)
             console.log(err)
+        })
+    })
+}
+
+
+exports.addProduct = (data) => {
+    return new Promise((resolve, reject)=> {
+        mongoose.connect(DB_URL).then(()=> {
+           let item = new Product(data)
+           return item.save()
+        }).then(()=> {
+            mongoose.disconnect()
+            resolve()
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
         })
     })
 }
