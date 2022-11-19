@@ -1,24 +1,26 @@
 <%- include("parts/header") %>
 <%- include("parts/navbar") %>  
 
-<div calss="container">
+<div calss="container" style="height: 80vh">
 <% if(addressError.length > 0){ %>
     <div class="alert alert-danger"><%= addressError %></div>
     <% } %>
     <% if(items.length === 0) { %>
         <p class="alert alert-danger">there are no item</p>
         <% } else {%>
-            <table>
+            <table class="table  w-75 mx-auto mt-5">
                 <thead>
+                  <tr>
                     <td>no</td>
                     <td>product name</td>
                     <td>price</td>
                     <td>amount</td>
                     <td>address</td>
                     <td>total</td>
-                    <td></td>
+                   
+                  </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     <% for(let i = 0; i < items.length; i++){ %>
                         <tr>
                             <td><%= i+1 %></td>
@@ -36,7 +38,7 @@
                                     <input type="hidden" name="price" value="<%= items[i].price %>" />
                                     <input type="hidden" name="productId" value="<%= items[i].productId %>" />
 
-                                    <input type="submit" class="btn btn-success" value="save"  formaction="/cart/save" />
+
                                     <input type="submit" class="btn btn-primary" value="order" formaction="/admin/orders" />
                                     <input type="submit" class="btn btn-danger" value="delete"  formaction="/cart/delete" />
                                 </td>
@@ -45,9 +47,9 @@
                         </tr>
                         <% } %>
                 </tbody>
-            </table>
-            <form action="/cart/deleteAll" method="POST">
-                 <input type="submit" class="btn btn-primary btn-lg" value="delete all" />
+              </table>
+            <form action="/cart/deleteAll" method="POST" style="width: 66vh; display: flex; justify-content: center;">
+                 <input type="submit" class="btn btn-danger btn-lg" value="delete all" />
             </form>
             
             <% } %>

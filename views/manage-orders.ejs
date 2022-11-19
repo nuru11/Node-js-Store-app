@@ -2,7 +2,7 @@
 <%- include("parts/navbar") %>  
 
 <% if(item.length > 0) { %>
-<table class="table table-dark table-striped w-75 mx-auto mt-5">
+<table class="table table-dark w-75 mx-auto mt-5">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -14,7 +14,6 @@
         <th scope="col">address</th>
         <th scope="col">status</th>
         <th scope="col">Date/Time</th>
-        <th scope="col">delete</th>
       </tr>
     </thead>
     <tbody>
@@ -29,11 +28,11 @@
         <td><%= item[items].address %></td>
         <td>processing</td>
         <td><%= item[items].time %></td>
-        <td class="table-dark">
+        <td style="background-color: transparent">
           <form method="POST" action="/admin/deleteOrder">
             <input type="hidden" name="id" value="<%= item[items]._id %>" />
             <input type="hidden" name="deleteOrder" value="/admin/manage-orders" />
-          <input type="submit" class="alert alert-danger" value="delete"/>
+          <input type="submit" class="alert" style="background-color: red" value="delete"/>
         </form></td>
       </tr>
       <% } %>

@@ -5,8 +5,8 @@
     <h3>create account</h3>
     <form method="POST" action="/login">
         <input type="email" class="form-control" name="email" placeholder="E-email" />
-        <input type="password" class="form-control" name="password" placeholder="password" />
-        <input type="submit" value="login" class="btn btn-primary" />
+        <input type="password" style="margin-top:10px" class="form-control" name="password" placeholder="password" />
+        <input type="submit" style="margin-top:15px" value="login" class="btn btn-primary" />
     </form>
     <% if(loginValidationResult){ %>
         <% for(let error of loginValidationResult) { %>

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 
 const DB_URL = 'mongodb+srv://nuru11:0966202667@cluster0.f92keez.mongodb.net/online-shop?retryWrites=true&w=majority'
-//const jsonProducts = require("../books.json")
 
 const SchemaProducts = mongoose.Schema({
     name: String, 
@@ -57,6 +56,6 @@ exports.addProduct = (data) => {
         }).catch(err => {
             mongoose.disconnect()
             reject(err)
-        })
+        }) 
     })
 }

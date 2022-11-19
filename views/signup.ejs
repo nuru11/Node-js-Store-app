@@ -12,7 +12,7 @@
                 <%= usernameError.msg %>
             </p>
             <% } %>
-        <input type="email" class="form-control" name="email" placeholder="E-email" />
+        <input type="email" style="margin-top:10px" class="form-control" name="email" placeholder="E-email" />
         <% let emailError = validationError.find(err => err.param === "email") %>
         <% if(emailError){ %>
             <p class="alert alert-danger">
@@ -23,21 +23,21 @@
                 <div><%= authError %></div>
                 <% } %>
             
-        <input type="password" class="form-control" name="password" placeholder="password" />
+        <input type="password" style="margin-top:10px" class="form-control" name="password" placeholder="password" />
         <% let passwordError = validationError.find(err => err.param === "password") %>
         <% if(passwordError){ %>
             <p class="alert alert-danger">
                 <%= passwordError.msg %>
             </p> 
             <% } %>
-        <input type="password" class="form-control" name="confirmPassword" placeholder="confirmPassword" />
+        <input type="password" style="margin-top:10px" class="form-control" name="confirmPassword" placeholder="confirmPassword" />
         <% let confirmPasswordError = validationError.find(err => err.param === "confirmPassword") %>
         <% if(confirmPasswordError){ %>
             <p class="alert alert-danger">
                 <%= confirmPasswordError.msg %>
             </p>
             <% } %>
-        <input type="submit" value="create account" class="btn btn-primary" />
+        <input type="submit" style="margin-top:20px" value="create account" class="btn btn-primary" />
     </form>
     <br>
     <div>
