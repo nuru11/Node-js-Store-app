@@ -30,6 +30,9 @@ exports.addNewItem = (name, price, productId, userId, amount, timestapm) => {
         }).then(()=>{
             mongoose.disconnect()
             resolve()
+        }).catch(err=>{
+            mongoose.disconnect()
+            reject(err)
         })
     })
 }
@@ -62,22 +65,6 @@ exports.deleteItems = id => {
     })
 }
 
-/*
-exports.editItem = (id, newData) => {
-    return new Promise((resolve, reject)=> {
-        mongoose.connect(DB_URL)
-        .then(()=> {
-            cartItem.updateOne({_id: id}, newData)
-        }).then(items=>{
-            mongoose.disconnect()
-            resolve(items)
-        }).catch(err=> {
-            mongoose.disconnect()
-            reject(err)
-        })
-    })
-}
-*/
 exports.delteAll = (userId) => {
     return new Promise((resolve, reject)=>{
         mongoose.connect(DB_URL).then(()=>{

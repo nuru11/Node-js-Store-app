@@ -17,16 +17,14 @@ exports.getCart = (req, res, next) => {
 }
 
 exports.postCart = (req, res, next) => {
-    console.log(req.body)
-    console.log(req.session)
-    console.log(req.session.userId)
+   
     
     if(validationResult(req).isEmpty()){
         cartModel.addNewItem(req.body.name, req.body.price, req.body.productId, req.session.userId, req.body.amount, Date.now()).then(()=>{
             res.redirect("/")
         }).catch(err=>{
             console.log(err)
-            res.redirect("/")
+           res.redirect("/")
         })
     }else{
         req.flash("postCartValidationError", validationResult(req).array())
@@ -41,9 +39,7 @@ exports.deleteItems = (req, res, next) => {
 }
 
 exports.deleteAll = (req, res, next) => {
-    console.log(req.session.userId)
-    console.log("/*******************/")
-    console.log(req.body);
+  
     cartModel.delteAll(req.session.userId).then(()=>{
         res.redirect("/")
     }).catch(err=>{

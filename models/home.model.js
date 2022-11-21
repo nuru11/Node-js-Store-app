@@ -16,7 +16,7 @@ const Product = mongoose.model("product", SchemaProducts)
 exports.getAllProduct = () =>{
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(()=>{
-            Product.find({}).then(products=>{
+            Product.find({}).limit(8).then(products=>{
                 mongoose.disconnect()
                 resolve(products) 
             }).catch(err=>{
@@ -42,6 +42,21 @@ exports.getProductByIdd = id => {
             console.log(err)
         })
     })
+}
+
+exports.getProductsByCategory = (category) => {
+   return new Promise((resolve, reject) => {
+    mongoose.connect(DB_URL).then(() => {
+        return Product.find({category: category})
+    }).then((item)=>{
+       mongoose.disconnect()
+       resolve(item)
+       
+    }).catch(err=>{
+        mongoose.disconnect()
+        reject(err)
+    })
+   })
 }
 
 

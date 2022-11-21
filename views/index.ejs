@@ -7,15 +7,14 @@
       <select name="category" class="form-control" style="margin-top: 10px">
         <option value="all">all</option>
         <option value="clothes">clothes</option>
-        <option value="phones">phones</option>
-        <option value="computers">computers</option>
+        <option value="technology">technology</option>
       </select>
       <input type="submit" style="margin-top: 10px" class="btn btn-primary" value="filter" />
     </form>
     <% if(postCartValidationError) {%>
       <% for(let p of postCartValidationError){ %>
-          <div class="alert alert-danger"><%= p.msg %></div>
-        <% } %>
+        <div class="alert alert-danger"><%= p.msg %></div>
+      <% } %>
       <% } %>
     <% if(products.length === 0) { %>
       <div>there is on product</div>
@@ -47,6 +46,12 @@
      <% } %>
   
       <% } %>
+
+      <% if(postCartValidationError) {%>
+        <% for(let p of postCartValidationError){ %>
+          <div class="alert alert-danger"><%= p.msg %></div>
+        <% } %>
+        <% } %>
   </div>
   </div> 
 <%- include("parts/footer") %> 
