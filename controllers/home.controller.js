@@ -1,6 +1,6 @@
-const homeModel = require("../models/home.model")
+const homeModel = require('../models/home.model');
 
-exports.getHome = (req,res,next) => {
+/*exports.getHome = (req,res,next) => {
  
    console.log(req.flash("postCartValidationError"))
 
@@ -19,4 +19,8 @@ exports.getHome = (req,res,next) => {
       })
      }) 
    
-}
+}*/
+
+exports.getHome = (req, res, next) => {
+  res.send('hello nuru');
+};
