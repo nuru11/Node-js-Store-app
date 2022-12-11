@@ -8,9 +8,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "devStart": "nodemon index.js",
-    "build": "npm run build",
-    "serve": "node dist/index.js"
+    "devStart": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
