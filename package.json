@@ -7,7 +7,6 @@
     "node": "18.3.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "devStart": "nodemon index.js",
     "build": "rm -rf dist && babel backend -d dist && cd frontend && npm install && npm run build",
