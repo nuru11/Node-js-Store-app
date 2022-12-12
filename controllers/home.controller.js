@@ -1,7 +1,7 @@
 const homeModel = require('../models/home.model');
 
 exports.getHome = (req, res, next) => {
-  console.log(req.flash('postCartValidationError'));
+   console.log(req.flash('postCartValidationError'));
 
   let category = req.query.category;
   let validCategory = ['clothes', 'technology'];
@@ -18,4 +18,6 @@ exports.getHome = (req, res, next) => {
       pageTitle: 'Home',
     });
   });
+
+ 
 };
