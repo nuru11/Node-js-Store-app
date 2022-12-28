@@ -2,7 +2,7 @@
 
 <div class="container">
   <form method="GET" action="/">
-    <select name="category" class="form-control" style="margin-top: 10px">
+    <select name="category" class="form-control" style="margin-top: 10px; width: fit-content">
       <option value="all">all</option>
       <option value="clothes">clothes</option>
       <option value="technology">technology</option>
@@ -14,6 +14,30 @@
       value="filter"
     />
   </form>
+
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="margin-top: 10px; width: 600px; margin-left: 20%;">
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <img src="/img7.jpg" class="d-block w-100" alt="..." height="300" style="width: 300px">
+        </div>
+       
+      <div class="carousel-item">
+        <img src="/img8.jpg" class="d-block w-100" alt="..." height="300" width="300">
+      </div>
+      <div class="carousel-item">
+        <img src="/img9.jpg" class="d-block w-100" alt="..." height="300" width="300">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
   <% if(postCartValidationError) {%>
    <% for(let p of postCartValidationError){ %>
   <div class="alert alert-danger"><%= p.msg %></div>
