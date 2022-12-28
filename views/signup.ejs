@@ -2,7 +2,28 @@
 <%- include("parts/header") %>
 <%- include("parts/navbar") %>  
 
-<div class="container text-content">
+<style >
+
+ @media (max-width: 767px){
+    .signup-page{
+    border: 2px solid black;
+    border-radius: 10px; 
+    width: 300px;
+    margin-top: 60px;
+ }
+ }
+
+ @media (min-width: 992px){
+    .signup-page{
+    border: 2px solid black;
+    border-radius: 10px; 
+    width: 400px;
+    margin-top: 60px;
+    }
+ }
+</style>
+
+<div class="container text-content signup-page" >
     <h3>create account</h3>
     <form method="POST" action="/signup">
         <input type="text" class="form-control" name="username" placeholder="username" />

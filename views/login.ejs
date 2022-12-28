@@ -1,7 +1,40 @@
 <%- include("parts/header") %>
-<%- include("parts/navbar") %>  
+<%- include("parts/navbar") %> 
 
-<div class="container text-content">
+
+<style >
+
+    @media (max-width: 767px){
+       .login-page{
+       border: 2px solid black;
+       border-radius: 10px; 
+       width: 300px;
+       margin-top: 60px;
+       margin-left: 30px;
+    }
+    .account-password{
+        border: 1px solid red;
+        margin-bottom: 5px;
+    }
+    }
+   
+    @media (min-width: 992px){
+       .login-page{
+       border: 2px solid black;
+       border-radius: 10px; 
+       width: 400px;
+       margin-top: 60px;
+       }
+
+       .account-password{
+        border: 1px solid red;
+         width: fit-content;
+         margin-bottom: 5px;
+       }
+    }
+   </style>
+
+<div class="container text-content login-page">
     <h3>create account</h3>
     <form method="POST" action="/login">
         <input type="email" class="form-control" name="email" placeholder="E-email" />
@@ -15,7 +48,7 @@
         <% } %> 
 
       <% if(loginError.length > 0) {%>
-       <div class="alert alert-danger">jjjjjjkl</div>
+       <div class="alert alert-danger"></div>
         <% } %>
             
    
@@ -25,7 +58,7 @@
     </div>
     <br>
 
-    <div style="border: 1px solid red; width: 400px">
+    <div class="account-password" >
         <ul>
             <li>admin account: admin@gmail.com</li>
             <li>password: 123456</li>

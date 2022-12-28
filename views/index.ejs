@@ -22,18 +22,18 @@
    }
   </style>
 
-  <div id="carouselExampleAutoplaying" class="carousel slide slide-parent" data-bs-ride="carousel" >
+  <div id="carouselExampleAutoplaying" class="carousel slide slide-parent" data-bs-ride="carousel" style="margin-top: 10px;" >
     <div class="carousel-inner">
 
         <div class="carousel-item active">
-          <img src="/img7.jpg" class="d-block w-100" alt="..." height="300" style="width: 300px">
+          <img src="/img7.jpg" class="d-block w-100" alt="..." height="300" style="border-radius: 50%;">
         </div>
        
       <div class="carousel-item">
-        <img src="/img8.jpg" class="d-block w-100" alt="..." height="300" width="300">
+        <img src="/img8.jpg" class="d-block w-100" alt="..." height="300" style="border-radius: 50%;">
       </div>
       <div class="carousel-item">
-        <img src="/img9.jpg" class="d-block w-100" alt="..." height="300" width="300">
+        <img src="/img9.jpg" class="d-block w-100" alt="..." height="300" style="border-radius: 50%;">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -69,10 +69,10 @@
         />
         <div class="card-body">
           <h5 class="card-title">
-            <a href="/product/<%=product._id%>"><%= product.name%></a>
+            <a href="/product/<%=product._id%>" style="text-decoration: none">name: <%= product.name%></a>
           </h5>
 
-          <p><%= product.price %></p>
+          <p>price: $<%= product.price %></p>
           <form action="/cart" method="POST">
             <input type="number" name="amount" class="form-control" value="1" />
             <input type="hidden" name="name" value="<%= product.name %>" />
